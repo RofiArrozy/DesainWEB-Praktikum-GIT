@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menggunakan Media Query CSS3 - Logo UNS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        #logo-uns {
+            display: none; 
+            max-width: 100%; 
+            height: auto;
+        }
+
+        @media screen and (min-width: 1024px) {
+            #logo-uns {
+                display: block; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Menggunakan Media Query CSS3</h1>
+    <img id="logo-uns" src="logo_uns.png" alt="Logo UNS"> 
+    <p>Logo UNS akan terlihat hanya pada layar berukuran 1024 piksel atau lebih.</p>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 2: Highlight Teks Dinamis</title>
+    <style>
+        .highlight {
+            color: red;
+            background-color: yellow;
+            font-weight: bold;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 p-6 md:p-12">
+
+    <div class="bg-white p-8 rounded-xl shadow-lg max-w-4xl mx-auto">
+        
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-6">PTIK FKIP UNS</h1>
+        
+        <div id="konten-paragraf" class="text-gray-700 text-lg leading-relaxed mb-6">
+            <p id="paragraf">
+                The Faculty of Teacher Training and Education, Sebelas Maret University, Surakarta is an Educational Personnel Education Institution (LPTK) which has 24 study programs in 6 majors. Each study program has its own characteristics in producing superior, strong and intelligent educational staff.
+            </p>
+            <p id="paragraf2">
+                The Informatics and Computer Technology Education (PTIK) study program is planned to take shelter in the management of the Engineering and Vocational Education (PTK) department. This placement revises our previous statement, where the PTIK study program is under the P.MIPA department. PTIK is a study program that will produce graduates who are prioritized to teach in vocational/vocational programs. So, it would be better if PTIK was under the PTK department which oversees vocational programs such as Building Engineering Education, and Mechanical Engineering Education. To meet the needs of lecturers in the field of information technology that cannot be met by the PTK department, PTIK will conduct resource sharing with the mathematics study program.
+            </p>
+        </div>
+
+        <button id="highlightBtn" onclick="toggleHighlight()" 
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-200">
+            Highlight Paragraf
+        </button>
+
+        <p id="status-highlight" class="mt-4 text-sm text-gray-500">Status: Tidak ada highlight.</p>
+
+    </div>
+
+    <script>
+        const paragrafElement1 = document.getElementById('paragraf');
+        const paragrafElement2 = document.getElementById('paragraf2');
+        const statusElement = document.getElementById('status-highlight');
+        const buttonElement = document.getElementById('highlightBtn');
+        
+        const kataKunci = [
+            "Educational Personnel Education Institution", 
+            "superior", 
+            "strong", 
+            "intelligent",
+            "Informatics and Computer Technology Education",
+            "Engineering and Vocational Education",
+            "prioritized to teach",
+            "Building Engineering Education",
+            "Mechanical Engineering Education",
+            "resource sharing",
+            "mathematics study program"
+        ];
+        
+        const teksAsli1 = paragrafElement1.innerHTML;
+        const teksAsli2 = paragrafElement2.innerHTML;
+
+        let isHighlighted = false;
+
+        function toggleHighlight() {
+            if (isHighlighted) {
+                paragrafElement1.innerHTML = teksAsli1;
+                paragrafElement2.innerHTML = teksAsli2;
+                isHighlighted = false;
+                statusElement.textContent = "Status: Tidak ada highlight.";
+                buttonElement.textContent = "Highlight Paragraf";
+            } else {
+                highlightText(paragrafElement1);
+                highlightText(paragrafElement2);
+                isHighlighted = true;
+                statusElement.textContent = "Status: Highlight Aktif.";
+                buttonElement.textContent = "Hapus Highlight";
+            }
+        }
+
+        function highlightText(element) {
+            let konten = element.innerHTML;
+            
+            kataKunci.forEach(kata => {
+                const regex = new RegExp(kata, 'gi');
+                
+                const replacement = `<span class="highlight">$&</span>`;
+                
+                konten = konten.replace(regex, replacement);
+            });
+            
+            element.innerHTML = konten;
+        }
+        
+    </script>
+</body>
+</html>

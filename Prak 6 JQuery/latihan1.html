@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlight Kalimat jQuery</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .paragraf {
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h2>Latihan 1: Highlight Kalimat</h2>
+    <p>Arahkan kursor ke paragraf di bawah ini untuk melihat efek highlight.</p>
+
+    <div class="paragraf highlight-me">
+        Ini adalah kalimat pertama yang akan di-highlight ketika kursor berada di atasnya (mouseenter).
+    </div>
+
+    <div class="paragraf highlight-me">
+        Kalimat kedua ini juga akan memiliki efek highlight yang sama menggunakan jQuery.
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".highlight-me")
+            
+            .mouseenter(function(){
+                $(this).css("background-color", "yellow");
+            })
+            
+            .mouseleave(function(){
+                            $(this).css("background-color", "transparent");
+            });
+        });
+    </script>
+</body>
+</html>

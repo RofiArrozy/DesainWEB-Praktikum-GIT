@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jam Digital JQuery</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { text-align: center; font-family: sans-serif; }
+        #tanggal { font-size: 1.5em; font-weight: bold; margin-bottom: 5px; }
+        #jam { font-size: 3em; margin-bottom: 20px; }
+        #startStop { padding: 10px 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h2>Latihan 2: Jam Digital Start/Stop</h2>
+    <div id="tanggal"></div>
+    <div id="jam">00:00:00</div>
+    <button id="startStop">START</button>
+
+    <script type="text/javascript">
+        let timerId = null; 
+
+        function addLeadingZero(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+        function updateClock() {
+            const date = new Date();
+            
+            const h = addLeadingZero(date.getHours());
+            const m = addLeadingZero(date.getMinutes());
+            const s = addLeadingZero(date.getSeconds());
+            const timeString = h + ":" + m + ":" + s;
+
+            const dateString = date.toLocaleDateString('id-ID', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+
+            $('#tanggal').html(dateString);
+            $('#jam').html(timeString);
+        }
+
+        $(document).ready(function(){
+            updateClock(); 
+            $('#startStop').text("START")
+
+            $('#startStop').click(function(){
+                if (timerId) {
+                    clearInterval(timerId);
+                    timerId = null;
+                    $(this).text("START")
+                } else {
+                    timerId = setInterval(updateClock, 1000); 
+                    $(this).text("STOP");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

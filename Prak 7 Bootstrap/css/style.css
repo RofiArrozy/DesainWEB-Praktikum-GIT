@@ -1,0 +1,44 @@
+
+.header-footer-style {
+    background-color: #e9ecef; 
+    border-radius: 0; 
+}
+
+
+.main-content-area {
+    background-color: #adb5bd; 
+    padding: 20px; 
+    border-radius: 0;
+}
+
+
+.content-title {
+    background-color: #ffffff; 
+    color: #212529;
+    padding: 8px 15px;
+    font-weight: bold;
+    width: 100%;
+    text-align: left; 
+    margin-bottom: 20px;
+}
+
+
+
+#testimoni-box {
+    min-height: 455px;
+}
+
+#kritik-box {
+    min-height: 215px;
+}
+
+#saran-box {
+    min-height: 225px;
+}
+
+
+.content-text {
+    color: #000000; 
+    font-size: 0.95rem; 
+    line-height: 1.6;   
+}
