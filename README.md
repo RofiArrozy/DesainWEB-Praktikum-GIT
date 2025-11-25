@@ -1,1 +1,1 @@
-# DesainWEB-Praktikum-GIT
+# DesainWeb-Praktikum-GIT
